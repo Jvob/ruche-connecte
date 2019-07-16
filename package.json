@@ -4,7 +4,8 @@
   "description": "display data from ruch rasp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"index.js"
   },
   "author": "jerome vobmann",
   "license": "ISC",
