@@ -1,0 +1,31 @@
+/* <---- Top barre Menu ----> */
+.top-bar-container {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  box-shadow : 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  background-color : var(--main-color);
+  height : 55px;
+
+}
+
+.ul-bar-container{
+  list-style:none;
+  padding : 10px;
+  margin : 0px;
+  color : white;
+  font-size: 22px;
+}
+
+.top-bar-button {
+  border-radius: 10px;
+  border : 3px solid var(--grey-light);
+  padding : 5px 10px 5px 10px;
+  margin-left: 20px;
+  font-size:15px;
+  cursor: pointer;
+}
+
+.top-bar-button:hover {
+  border: 3px solid var(--main-color-dark);
+}

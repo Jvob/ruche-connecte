@@ -1,0 +1,176 @@
+{{> topbar}}
+
+<header>
+        <h1>Projet ruche connectée</h1>
+        <nav id="primary_nav_wrap">
+            <ul>
+                <li>
+                    <a class="big transition" href="#presentation">Présentation</a>
+                    <ul class="else">
+                        <li><a href="#members">Membres</a></li>
+                        <li><a href="#projets">Projets</a></li>
+                        <li><a href="#contrains">Contraintes</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="big transition" href="#realisation">Realisation du projet</a>
+                    <ul class="else">
+                        <li><a href="#choices">Choix des composants</a></li>
+                        <li><a href="#tests">Tests et implantation dans ESP32</a></li>
+                        <li><a href="#rezs">Choix du reseaux pour la trasnmissions de données</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="presentation" id="presentation">
+            <h2>Présentation</h2>
+            <div class="pre-all">
+                <div class="members col3" id="members">
+                    <div class="content">
+                        <h3>Membres</h3>
+                        <p>Nous sommes <strong>cinq étudiants de l’IUT de Haguenau en 2è année GEII et MMI</strong>.</p>
+                        <p>Notre projet consiste à instrumenter une <strong>ruche pour la connecter à Internet</strong>. Ce projet fait appel à de nombreuses autres personnes : </p>
+                        <ul>
+                            <li>L'apiculteur : Son partage de connaissance nous a permis de choisir et placer nos capteurs sur la ruche. C'est également lui qui a fait fabriquer la ruche.</li>
+                            <li>Manipulse : l’association qui nous a recruté pour mener à bien le projet et qui finance le matériel nécessaire. <img src="static-files/manipulse-logo.jpg" alt="manipulse-logo"></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="members col3" id="members">
+                    <div class="content">
+                        <h3>Projets</h3>
+                        <p>Deux types de ruches connectées sont envisagées : </p>
+                        <ul>
+                            <li>Une ruche « école » qui sera mise à disposition d’élèves dans une classe à Illkirch.
+                            </li>
+                            <li>Une ruche connectée pour apiculteurs, donc auto-suffisante. </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contrains" id="contrains">
+                    <h3>Contraintes</h3>
+                    <p>Naturellement, plusieurs contraintes sont à prendre en compte : </p>
+                    <div class="contrains-container">
+                        <div class="col3">
+                            <div class="icon"><i class="fas fa-money-check-alt"></i></div>
+                            <p> <strong>Le coût des capteurs.</strong> Si le projet tend à proposer à plusieurs
+                                apiculteurs
+                                des ruches
+                                connectées, il faut alors que celles-ci soient <strong>raisonnables</strong> au niveau
+                                du
+                                prix. Il faut que ça
+                                reste une proposition <strong>avantageuse</strong> pour les apiculteurs.</p>
+                        </div>
+                        <div class="col3">
+                            <div class="icon"><i class="fab fa-forumbee"></i></div>
+                            <p> <strong>Le respect des abeilles.</strong> : la création d’une ruche connectée ne doit
+                                pas signifier une mise à risque pour les abeilles. Nos capteurs sont choisis pour ne pas
+                                nuire à ces dernières.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="realisation" id="realisation">
+
+            <h2>Réalisation du projet</h2>
+            <div class="choices" id="choices">
+                <h3>Choix des composants</h3>
+                <div class="all_components">
+                    <div class="components">
+                        <div class="img col2">
+                            <img src="static-files/capt_temphum.jpg" alt="capteurs_temp">
+                        </div>
+                        <div class="content col2">
+                            <h4>Capteur de température et humidité (référence : SHT30)</h4>
+                            <i>Deux capteurs utilisés</i>
+                            <p>1 extérieur + 1 intérieur. Permet de contrôler la température et l’humidité
+                                essentiellement à l’intérieur de la ruche.</p>
+                        </div>
+                    </div>
+                    <div class="components">
+                        <div class="img col2">
+                            <img src="static-files/capt_connect.jpg" alt="capteurs_connect">
+                        </div>
+                        <div class="content col2">
+                            <h4>Capteur de couleurs (Référence : TCS230). </h4>
+                            <i>(référence : TCS230). </i>
+                            <p>Permet de détecter les déchets de la ruche.</p>
+                        </div>
+                    </div>
+                    <div class="components">
+                        <div class="img col2">
+                            <img src="static-files/capteur-presence.jfif" alt="capteurs_presence">
+                        </div>
+                        <div class="content col2">
+                            <h4>Capteur de présence (référence : KY 008 )</h4>
+                            <p>On a deux capteurs de présence : un pour l’entrée et un pour la sortie des abeilles. Un
+                                capteur de présence est composé d’un laser et d’un récepteur laser</p>
+                        </div>
+                    </div>
+                    <div class="components">
+                        <div class="img col2">
+                            <img src="static-files/capt_gaz.jpg" alt="capteurs_gaz">
+                        </div>
+                        <div class="content col2">
+                            <h4>Capteur de gaz (Référence : MQ2)</h4>
+                            <i>1 capteur utilisé </i>
+                            <p>Sert à contrôler les émanations de gaz (de certains champignons par exemple)</p>
+                        </div>
+                    </div>
+                    <div class="components">
+                        <div class="img col2"><img src="static-files/capt_poid.jpg" alt="capteur_poids"></div>
+                        <div class="content col2">
+                            <h4>Capteur de poids (Référence : RCmall human scale load cell et son module HX711)</h4>
+                            <p>On utilise 5 pieds pour mesurer la valeur du poids. Nous permet de connaître la quantité
+                                de miel dans la ruche.</p>
+                        </div>
+                    </div>
+                    <div class="components">
+                        <div class="img col2"><img src="static-files/esp32wroom.jpg" alt="carte_esp32wroom"></div>
+                        <div class="content col2">
+                            <h4>Microcontroleur (référence : ESP32 WROOM)</h4>
+                            <p>Utilisé pour programmer l’ensemble des capteurs et permet de faire la liaison wifi pour
+                                le site web</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tests" id="tests">
+                <h3>Test et implantation dans ESP32</h3>
+                <ul>
+                    <li>
+                        Nous avons commencé les tests de chaque capteur séparément, avec une carte arduino.
+                    </li>
+                    <li>
+                        Ensuite, chaque capteur a été testé séparément avec l’ESP32
+                    </li>
+                    <li>
+                        Puis, tous les capteurs ont été testé ensemble sous le même programme, sous l’ESP 32 avec une
+                        alimentation qui venait d’une carte arduino.
+                    </li>
+                    <li>
+                        Enfin, nous avons testé tous les capteurs avec l’ESP32 et l’alimentation de la carte TTGO-LoRa
+                        T-Beam
+                    </li>
+                </ul>
+            </div>
+            <div class="rezs" id="rezs">
+                <h3>Choix du réseau pour la transmission de données</h3>
+                <p>Pour les données on fonctionne avec le réseau LoRaWAN (internet des objets): La technologie LoRaWAN
+                    offre de nombreux avantages pour les industriels car elle permet de mettre en place une
+                    infrastructure réseau sans fil très performante en termes de couverture (jusqu'à 15kms) </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Projet ruche connectée - GEII - IUT Haguenau - 2019</p>
+    </footer>
+
+
+
+    <script type="text/javascript" src="../home/home.js"></script> 

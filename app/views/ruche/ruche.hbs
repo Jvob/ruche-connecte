@@ -1,0 +1,44 @@
+{{> topbar}}
+
+
+<div class="ruche-container"> 
+	<div>
+		<h2>Température</h2>
+		<div id="ruche-temperature-legend" class="ruche-legend flex">
+			<div class="ruche-legend-square-1 flex">--</div>
+			<div class="ruche-legend-text flex"> Température intérieure </div>
+			<div class="ruche-legend-square-2 flex">--</div>
+			<div class="ruche-legend-text flex"> Température extérieur </div>
+		</div>
+		<div id="ruche-temperature"></div>
+	</div>
+
+	<div>
+		<h2> Liste des enregistrements </h2>
+		<div class="tg-wrap">
+		<table class="tg">
+		{{#each dataRuche}}
+			<tr>
+				<th class="tg-0lax">{{{id_enregistrement}}}</th>
+			    <th class="tg-0lax">{{numero_ruche}}</th>
+			    <th class="tg-0lax">{{position_gps_ruche}}</th>
+			    <th class="tg-0lax">{{date_enregistrement}}</th>
+			    <th class="tg-0lax">{{masse}}</th>
+			    <th class="tg-0lax">{{temperature_ext}}</th>
+			    <th class="tg-0lax">{{humidite_ext}}</th>
+			    <th class="tg-0lax">{{nb_sortie}}</th>
+			    <th class="tg-0lax">{{nb_entree}}</th>
+			    <th class="tg-0lax">{{nb_repas}}</th>
+			    <th class="tg-0lax">{{temperature_int}}</th>
+			    <th class="tg-0lax">{{humidite_int}}</th>
+			    <th class="tg-0lax">{{couleur}}</th>
+			    <th class="tg-0lax">{{gaz}}</th>
+		  	</tr>
+		{{/each}}
+		</table>
+		</div>
+</div>
+
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+<script type="text/javascript" src="./ruche.js" defer></script>
+

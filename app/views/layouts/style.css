@@ -1,0 +1,33 @@
+:root{
+ 	--main-color : #ffb86c;
+ 	--main-color-dark: #b85f00;
+ 	--grey-light : #ffffff;
+}
+
+html, body{
+	margin : 0px;
+  	padding : 0px;
+  	font-family: 'Lato', sans-serif;
+  	color : var(--main-text-color);
+  	height: 100%;
+}
+
+a {
+	text-decoration : none;
+	color : var(--main-text-color);
+ 	cursor : pointer;
+}
+
+.flex {
+	display : flex;
+}
+
+.vertical-align {
+	margin-top : auto;
+	margin-bottom: auto;
+}
+
+.transition {
+	-webkit-transition: all .3s ease-out;
+	transition-delay: .05s;
+}
