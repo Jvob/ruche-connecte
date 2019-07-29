@@ -9,7 +9,7 @@ fetchLogsData = function(id_ruche) {
 	labels:[],
 	series:[]
 	};
-
+	let date_enre;
 	const urlToFetch = '../api/dataLogs/'+id_ruche
 	fetch(urlToFetch)     	
 	
@@ -18,20 +18,41 @@ fetchLogsData = function(id_ruche) {
 	})     
 	.then(function(data){
 		//console.log(data)
+		const dataTemperature = {
+			labels:[],
+			series:[]
+		};
+		const dataHumidite = {
+			labels:[],
+			series:[]
+		};
 		var dataLen = data.length;
-		var series1 = [];
-		var series2 = [];
+		var seriesTemperature1 = [];
+		var seriesTemperature2 = [];
+		var seriesHumidite1 = [];
+		var seriesHumidite2 = [];
+
 		for (var i=1; i< dataLen; i++){
-			dataTemperature.labels.push(data[i].date_enregistrement);
-			series1.push(data[i].temperature_ext)
-			series2.push(data[i].temperature_int)
+			date_enre = data[i].date_enregistrement.split(" ")
+			dataTemperature.labels.push(date_enre[0]+'/07 '+date_enre[3].split(":")[0]+"h");
+			seriesTemperature1.push(data[i].temperature_ext)
+			seriesTemperature2.push(data[i].temperature_int)
+
+			dataHumidite.labels.push(date_enre[0]+'/07 '+date_enre[3].split(":")[0]+"h");
+			seriesHumidite1.push(data[i].temperature_ext)
+			seriesHumidite2.push(data[i].temperature_int)
 		}
-		dataTemperature.series.push(series1);
-		dataTemperature.series.push(series2);
-		return dataTemperature
+
+		dataTemperature.series.push(seriesTemperature1);
+		dataTemperature.series.push(seriesTemperature2);
+
+		dataHumidite.series.push(seriesHumidite1);
+		dataHumidite.series.push(seriesHumidite2);
+
+		return {dataTemperature, dataHumidite}
 		//console.log(dataTemperature);
 	})
-	.then(function(dataTemperature){
+	.then(function(data){
 	var options = {
 	  	showPoint: true,
 	  	high: 40,
@@ -48,8 +69,10 @@ fetchLogsData = function(id_ruche) {
 	    	}	
 	  	}
 	};
-	new Chartist.Line('#ruche-temperature', dataTemperature, options);
+	new Chartist.Line('#ruche-temperature', data.dataTemperature, options);
+	new Chartist.Line('#ruche-humidite', data.dataTemperature, options);
 	})
+	
 
 	.catch (function(error){
 		throw error
