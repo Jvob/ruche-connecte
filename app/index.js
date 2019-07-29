@@ -5,7 +5,12 @@ const bodyParser = require('body-parser');
 const app = express(); 
 const mysql = require('mysql');
 
-const dataRuche = require('./dataRuche.js').dataRuche
+
+const dataRuches = require('./api/dataRuches.js').dataRuches
+const dataLogs = require('./api/dataLogs.js').dataLogs
+
+// api
+const api = require('./api/api.js').api
 
 
 
@@ -52,17 +57,18 @@ db.connect(function(err){
 })
 */
 
+/* ----> ROUTER <---- */
+
 app.get('/',function (req, res){
   res.render('home/home', {})
 }); 
-/* ----->  Routes  <--------*/
-app.get('/ruche',function (req, res){
-  res.render('ruche/ruche', {dataRuche})
-});  
 
-app.get('/api/dataRuche', function (req, res){
-  res.json(dataRuche)
+app.get('/ruche',function (req, res){
+  res.render('ruche/ruche', {dataRuches, dataLogs})
 });  
+  
+
+app.get('/api/:dataType/:id_ruche?', api); 
 
 
 

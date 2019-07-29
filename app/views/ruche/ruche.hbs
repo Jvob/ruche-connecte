@@ -1,44 +1,106 @@
 {{> topbar}}
 
 
-<div class="ruche-container"> 
-	<div>
-		<h2>Température</h2>
-		<div id="ruche-temperature-legend" class="ruche-legend flex">
-			<div class="ruche-legend-square-1 flex">--</div>
-			<div class="ruche-legend-text flex"> Température intérieure </div>
-			<div class="ruche-legend-square-2 flex">--</div>
-			<div class="ruche-legend-text flex"> Température extérieur </div>
+<div class="ruche-container">
+	<div class="flex">
+		<div class="flex-wrap ruche-caracteristiques">
+			<div class="ruche-caracteristiques-title flex-wrap">
+				<h2> Vos ruches </h2>
+				<span> Cliquez dans le menu déroulant, ou sur la carte pour choisir la ruche que vous voulez observer</span>
+			</div>
+			<div class="flex-wrap ruche-choice-container">
+				<div class="ruche-select-container flex">
+					<select id="ruche-select" class="flex">
+						{{#each dataRuches}}
+						<option value="{{id_ruche}}">Ruche n°{{id_ruche}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div id="ruche-map" class="flex"></div>
+			</div>
 		</div>
-		<div id="ruche-temperature"></div>
+		<div class="ruche-data">
+			<h2> Les caractéristiques de la ruche </h2>
+			<div>
+				<h3>Température</h3>
+				<div id="ruche-temperature"></div>
+				<div id="ruche-temperature-legend" class="ruche-legend flex-wrap">
+					<div class="ruche-legend-square-1 flex">--</div>
+					<div class="ruche-legend-text flex"> Température intérieure</div>
+					<div class="ruche-legend-square-2 flex">--</div>
+					<div class="ruche-legend-text flex"> Température extérieure</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+		<div>
+			<h2> Liste des Ruches </h2>
+			<div class="tg-wrap">
+			<table class="tg">
+			<tr>
+				<th class="tg-0lax">Ruche ID</th>
+			    <th class="tg-0lax">Latitude</th>
+			    <th class="tg-0lax">Longitude</th>		
+			</tr>
+			{{#each dataRuches}}
+				<tr>
+					<th class="tg-0lax">{{{id_ruche}}}</th>
+				    <th class="tg-0lax">{{position_gps_ruche_latitude}}</th>
+				    <th class="tg-0lax">{{position_gps_ruche_longitude}}</th>
+			  	</tr>
+			{{/each}}
+			</table>
+			</div>
+		</div>
 
 	<div>
 		<h2> Liste des enregistrements </h2>
 		<div class="tg-wrap">
 		<table class="tg">
-		{{#each dataRuche}}
+			<tr>
+				<th class="tg-0lax">ID</th>
+			    <th class="tg-0lax">Ruche ID</th>
+			    <th class="tg-0lax">Date</th>
+			    <th class="tg-0lax">Masse</th>
+			    <th class="tg-0lax">Temperature ext</th>
+			    <th class="tg-0lax">Temperature int</th>
+			    <th class="tg-0lax">Humidite ext</th>
+			    <th class="tg-0lax">Humidite int</th>
+			    <th class="tg-0lax">Nbr sortie</th>
+			    <th class="tg-0lax">Nbr entree</th>
+			    <th class="tg-0lax">Nbr repas</th>
+			    <th class="tg-0lax">Couleur</th>
+			    <th class="tg-0lax">Gaz</th>
+		  	</tr>
+		{{#each dataLogs}}
 			<tr>
 				<th class="tg-0lax">{{{id_enregistrement}}}</th>
-			    <th class="tg-0lax">{{numero_ruche}}</th>
-			    <th class="tg-0lax">{{position_gps_ruche}}</th>
+			    <th class="tg-0lax">{{id_ruche}}</th>
 			    <th class="tg-0lax">{{date_enregistrement}}</th>
 			    <th class="tg-0lax">{{masse}}</th>
 			    <th class="tg-0lax">{{temperature_ext}}</th>
+			    <th class="tg-0lax">{{temperature_int}}</th>
 			    <th class="tg-0lax">{{humidite_ext}}</th>
+			    <th class="tg-0lax">{{humidite_int}}</th>
 			    <th class="tg-0lax">{{nb_sortie}}</th>
 			    <th class="tg-0lax">{{nb_entree}}</th>
 			    <th class="tg-0lax">{{nb_repas}}</th>
-			    <th class="tg-0lax">{{temperature_int}}</th>
-			    <th class="tg-0lax">{{humidite_int}}</th>
 			    <th class="tg-0lax">{{couleur}}</th>
 			    <th class="tg-0lax">{{gaz}}</th>
 		  	</tr>
 		{{/each}}
 		</table>
 		</div>
+	</div>
+
 </div>
 
+<footer>
+    <p>Projet ruche connectée - GEII - IUT Haguenau - 2019</p>
+</footer>
+
 <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-<script type="text/javascript" src="./ruche.js" defer></script>
+<script type="text/javascript" src="./ruche.js" ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16mAE4ze1DqbhHUcBYLoeif95BaQrxBk&callback=initMap"></script>
 
